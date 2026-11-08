@@ -26,7 +26,7 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-CRON_GRAB="*/${INTERVAL} * * * * ${RUNTIME_DIR}/grab.sh >> ${RUNTIME_DIR}/cron.log 2>&1"
+CRON_GRAB="*/${INTERVAL} * * * * ${PROJECT_DIR}/bin/grab.sh >> ${RUNTIME_DIR}/cron.log 2>&1"
 CRON_REPORT="0 ${REPORT_HOUR} * * * ${PROJECT_DIR}/tools/daily-report.sh >> ${RUNTIME_DIR}/cron.log 2>&1"
 
 remove_cron_lines() {
