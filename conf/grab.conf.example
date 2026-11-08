@@ -1,0 +1,32 @@
+# grab.conf — 抢机配置模板
+# 复制为 grab.conf 后填写必填项。此文件含敏感信息, 不要提交到 git。
+
+# ==== OCI 必填(控制台获取, 见 README「准备 API Key」) ====
+OCI_USER_OCID=ocid1.user.oc1.REPLACE_ME
+OCI_TENANCY_OCID=ocid1.tenancy.oc1.REPLACE_ME
+OCI_REGION=REPLACE_ME_REGION          # 例: ap-tokyo-1 / us-ashburn-1 / eu-frankfurt-1
+
+# ==== OCI 可选 ====
+COMPARTMENT_OCID=                     # 留空 = 根隔间(即 tenancy)
+SUBNET_OCID=                          # 留空 = 自动选隔间内第一个公共子网
+INSTANCE_CONFIG_NAME=my-grab-config   # 控制台「保存为实例配置」的名字
+DISPLAY_NAME=my-a1-free               # 抢到后实例显示名
+
+# ==== 通知(选一个渠道, 其余留空) ====
+# telegram | ntfy | bark | serverchan | webhook | none
+NOTIFY_CHANNEL=none
+TELEGRAM_BOT_TOKEN=                   # @BotFather 创建 bot 后的 token
+TELEGRAM_CHAT_ID=                     # 你的数字 chat id(@userinfobot 查询)
+NTFY_TOPIC_URL=                       # 如 https://ntfy.sh/你的随机主题
+NTFY_TOKEN=                           # 可选, ntfy 私有主题的 token
+BARK_URL=                             # 如 https://api.day.app/你的Key
+SERVERCHAN_SENDKEY=                   # Server酱 SendKey(微信推送)
+WEBHOOK_URL=                          # 通用 webhook, POST {"text":"..."}
+
+# ==== 运行参数 ====
+SLEEP_BETWEEN=15                      # 同一轮各可用域间隔(秒)
+JITTER=30                             # 每次运行前随机等待 0~N 秒
+DRY_RUN=0                             # 1 = 只构造请求不真正发起(调试用)
+
+# ==== 每日早报(配合 cron, 见 README) ====
+REPORT_TZ=CST-8                       # 报告时区; CST-8 即 UTC+8
